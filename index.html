@@ -226,7 +226,7 @@
       try {
         {const providers = {};
 providers.local = new Scaffolding.Cloud.LocalStorageProvider("cloudvariables:tamatya");
-providers.ws = new Scaffolding.Cloud.WebSocketProvider(["wss://cloud.achex.ca/qiita","wss://clouddata.turbowarp.xyz"], "tamatya");
+providers.ws = new Scaffolding.Cloud.WebSocketProvider(["wss://ws.achex.ca","wss://clouddata.turbowarp.xyz"], "tamatya");
 for (const provider of Object.values(providers)) scaffolding.addCloudProvider(provider);
 scaffolding.addCloudProviderOverride("☁ ログインアカウント", providers["local"] || null);
 scaffolding.addCloudProviderOverride("☁ データ1", providers["ws"] || null);
