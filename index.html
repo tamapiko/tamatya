@@ -223,28 +223,31 @@
       scaffolding.setUsername("player####".replace(/#/g, () => Math.floor(Math.random() * 10)));
       scaffolding.setAccentColor("#96d35f");
 
-      try {
-        {const providers = {};
-providers.local = new Scaffolding.Cloud.LocalStorageProvider("cloudvariables:tamatya");
-providers.ws = new Scaffolding.Cloud.WebSocketProvider("wss://ws.achex.ca/", "tamatya");
-for (const provider of Object.values(providers)) scaffolding.addCloudProvider(provider);
-scaffolding.addCloudProviderOverride("☁ ログインアカウント", providers["local"] || null);
-scaffolding.addCloudProviderOverride("☁ データ1", providers["ws"] || null);
-scaffolding.addCloudProviderOverride("☁ データ2", providers["ws"] || null);
-scaffolding.addCloudProviderOverride("☁ データ3", providers["ws"] || null);
-scaffolding.addCloudProviderOverride("☁ データ4", providers["ws"] || null);
-scaffolding.addCloudProviderOverride("☁ 登録データ1", providers["ws"] || null);
-scaffolding.addCloudProviderOverride("☁ 登録データ2", providers["ws"] || null);
-scaffolding.addCloudProviderOverride("☁ 登録データ3", providers["ws"] || null);
-scaffolding.addCloudProviderOverride("☁ 登録データ4", providers["ws"] || null);
-scaffolding.addCloudProviderOverride("☁ チャットデータ1", providers["ws"] || null);
-scaffolding.addCloudProviderOverride("☁ チャットデータ2", providers["ws"] || null);
-scaffolding.addCloudProviderOverride("☁ チャットデータ3", providers["ws"] || null);
-scaffolding.addCloudProviderOverride("☁ チャットデータ4", providers["ws"] || null);
-};
-      } catch (error) {
-        console.error(error);
-      }
+try {
+    const providers = {};
+    providers.local = new Scaffolding.Cloud.LocalStorageProvider("cloudvariables:tamatya");
+    providers.ws = new Scaffolding.Cloud.WebSocketProvider("wss://ws.achex.ca/", "tamatya");
+
+    for (const provider of Object.values(providers)) {
+        scaffolding.addCloudProvider(provider);
+    }
+
+    scaffolding.addCloudProviderOverride("☁ ログインアカウント", providers["local"] || null);
+    scaffolding.addCloudProviderOverride("☁ データ1", providers["ws"] || null);
+    scaffolding.addCloudProviderOverride("☁ データ2", providers["ws"] || null);
+    scaffolding.addCloudProviderOverride("☁ データ3", providers["ws"] || null);
+    scaffolding.addCloudProviderOverride("☁ データ4", providers["ws"] || null);
+    scaffolding.addCloudProviderOverride("☁ 登録データ1", providers["ws"] || null);
+    scaffolding.addCloudProviderOverride("☁ 登録データ2", providers["ws"] || null);
+    scaffolding.addCloudProviderOverride("☁ 登録データ3", providers["ws"] || null);
+    scaffolding.addCloudProviderOverride("☁ 登録データ4", providers["ws"] || null);
+    scaffolding.addCloudProviderOverride("☁ チャットデータ1", providers["ws"] || null);
+    scaffolding.addCloudProviderOverride("☁ チャットデータ2", providers["ws"] || null);
+    scaffolding.addCloudProviderOverride("☁ チャットデータ3", providers["ws"] || null);
+    scaffolding.addCloudProviderOverride("☁ チャットデータ4", providers["ws"] || null);
+} catch (error) {
+    console.error(error);
+}
 
       vm.setTurboMode(false);
       if (vm.setInterpolation) vm.setInterpolation(false);
