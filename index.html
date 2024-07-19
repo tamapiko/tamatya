@@ -111,10 +111,10 @@
       border-radius: 4px;
     }
     .control-button-highlight:hover {
-      background: #96d35f26;
+      background: #ff4c4c26;
     }
     .control-button-highlight.active {
-      background: #96d35f59;
+      background: #ff4c4c59;
     }
     .fullscreen-button {
       background: white;
@@ -201,8 +201,8 @@
       setProgress(0.1);
 
       const scaffolding = new Scaffolding.Scaffolding();
-      scaffolding.width = 270;
-      scaffolding.height = 480;
+      scaffolding.width = 480;
+      scaffolding.height = 360;
       scaffolding.resizeMode = "preserve-ratio";
       scaffolding.editableLists = false;
       scaffolding.usePackagedRuntime = true;
@@ -221,33 +221,30 @@
       };
 
       scaffolding.setUsername("player####".replace(/#/g, () => Math.floor(Math.random() * 10)));
-      scaffolding.setAccentColor("#96d35f");
+      scaffolding.setAccentColor("#ff4c4c");
 
-try {
-    const providers = {};
-    providers.local = new Scaffolding.Cloud.LocalStorageProvider("cloudvariables:tamatya");
-    providers.ws = new Scaffolding.Cloud.WebSocketProvider("wss://ws.achex.ca/", "tamatya");
-
-    for (const provider of Object.values(providers)) {
-        scaffolding.addCloudProvider(provider);
-    }
-
-    scaffolding.addCloudProviderOverride("☁ ログインアカウント", providers["local"] || null);
-    scaffolding.addCloudProviderOverride("☁ データ1", providers["ws"] || null);
-    scaffolding.addCloudProviderOverride("☁ データ2", providers["ws"] || null);
-    scaffolding.addCloudProviderOverride("☁ データ3", providers["ws"] || null);
-    scaffolding.addCloudProviderOverride("☁ データ4", providers["ws"] || null);
-    scaffolding.addCloudProviderOverride("☁ 登録データ1", providers["ws"] || null);
-    scaffolding.addCloudProviderOverride("☁ 登録データ2", providers["ws"] || null);
-    scaffolding.addCloudProviderOverride("☁ 登録データ3", providers["ws"] || null);
-    scaffolding.addCloudProviderOverride("☁ 登録データ4", providers["ws"] || null);
-    scaffolding.addCloudProviderOverride("☁ チャットデータ1", providers["ws"] || null);
-    scaffolding.addCloudProviderOverride("☁ チャットデータ2", providers["ws"] || null);
-    scaffolding.addCloudProviderOverride("☁ チャットデータ3", providers["ws"] || null);
-    scaffolding.addCloudProviderOverride("☁ チャットデータ4", providers["ws"] || null);
-} catch (error) {
-    console.error(error);
-}
+      try {
+        {const providers = {};
+providers.ws = new Scaffolding.Cloud.WebSocketProvider("wss://clouddata.turbowarp.org/tamatya", "tamatya");
+providers.local = new Scaffolding.Cloud.LocalStorageProvider("cloudvariables:tamatya");
+for (const provider of Object.values(providers)) scaffolding.addCloudProvider(provider);
+scaffolding.addCloudProviderOverride("☁ データ1", providers["ws"] || null);
+scaffolding.addCloudProviderOverride("☁ ログインアカウント", providers["local"] || null);
+scaffolding.addCloudProviderOverride("☁ データ2", providers["ws"] || null);
+scaffolding.addCloudProviderOverride("☁ データ3", providers["ws"] || null);
+scaffolding.addCloudProviderOverride("☁ データ4", providers["ws"] || null);
+scaffolding.addCloudProviderOverride("☁ 登録データ1", providers["ws"] || null);
+scaffolding.addCloudProviderOverride("☁ 登録データ2", providers["ws"] || null);
+scaffolding.addCloudProviderOverride("☁ 登録データ3", providers["ws"] || null);
+scaffolding.addCloudProviderOverride("☁ 登録データ4", providers["ws"] || null);
+scaffolding.addCloudProviderOverride("☁ チャットデータ1", providers["ws"] || null);
+scaffolding.addCloudProviderOverride("☁ チャットデータ2", providers["ws"] || null);
+scaffolding.addCloudProviderOverride("☁ チャットデータ3", providers["ws"] || null);
+scaffolding.addCloudProviderOverride("☁ チャットデータ4", providers["ws"] || null);
+};
+      } catch (error) {
+        console.error(error);
+      }
 
       vm.setTurboMode(false);
       if (vm.setInterpolation) vm.setInterpolation(false);
@@ -260,12 +257,12 @@ try {
       });
       if (vm.setCompilerOptions) vm.setCompilerOptions({
         enabled: true,
-        warpTimer: false
+        warpTimer: true
       });
       if (vm.renderer.setMaxTextureDimension) vm.renderer.setMaxTextureDimension(2048);
 
       if (typeof ScaffoldingAddons !== 'undefined') {
-        ScaffoldingAddons.run(scaffolding, {"gamepad":false,"pointerlock":false,"specialCloudBehaviors":true,"unsafeCloudBehaviors":false,"pause":false});
+        ScaffoldingAddons.run(scaffolding, {"gamepad":false,"pointerlock":false,"specialCloudBehaviors":true,"unsafeCloudBehaviors":true,"pause":false});
       }
 
       scaffolding.setExtensionSecurityManager({
@@ -327,7 +324,7 @@ try {
       await scaffolding.loadProject(projectData);
       setProgress(1);
       loadingScreen.hidden = true;
-      if (true) {
+      if (false) {
         scaffolding.start();
       } else {
         launchScreen.hidden = false;
