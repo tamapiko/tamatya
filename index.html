@@ -225,11 +225,11 @@
 
       try {
         {const providers = {};
-providers.ws = new Scaffolding.Cloud.WebSocketProvider("wss://clouddata.turbowarp.org/tamatya", "tamatya");
 providers.local = new Scaffolding.Cloud.LocalStorageProvider("cloudvariables:tamatya");
+providers.ws = new Scaffolding.Cloud.WebSocketProvider("wss://clouddata.turbowarp.org/tamatya", "tamatya");
 for (const provider of Object.values(providers)) scaffolding.addCloudProvider(provider);
-scaffolding.addCloudProviderOverride("☁ データ1", providers["ws"] || null);
 scaffolding.addCloudProviderOverride("☁ ログインアカウント", providers["local"] || null);
+scaffolding.addCloudProviderOverride("☁ データ1", providers["ws"] || null);
 scaffolding.addCloudProviderOverride("☁ データ2", providers["ws"] || null);
 scaffolding.addCloudProviderOverride("☁ データ3", providers["ws"] || null);
 scaffolding.addCloudProviderOverride("☁ データ4", providers["ws"] || null);
