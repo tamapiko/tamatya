@@ -111,10 +111,10 @@
       border-radius: 4px;
     }
     .control-button-highlight:hover {
-      background: #ff4c4c26;
+      background: #96d35f26;
     }
     .control-button-highlight.active {
-      background: #ff4c4c59;
+      background: #96d35f59;
     }
     .fullscreen-button {
       background: white;
@@ -204,7 +204,7 @@
       scaffolding.width = 270;
       scaffolding.height = 480;
       scaffolding.resizeMode = "preserve-ratio";
-      scaffolding.editableLists = false;
+      scaffolding.editableLists = true;
       scaffolding.usePackagedRuntime = true;
       scaffolding.setup();
       scaffolding.appendTo(appElement);
@@ -221,7 +221,7 @@
       };
 
       scaffolding.setUsername("player####".replace(/#/g, () => Math.floor(Math.random() * 10)));
-      scaffolding.setAccentColor("#ff4c4c");
+      scaffolding.setAccentColor("#96d35f");
 
       try {
         {const providers = {};
@@ -249,10 +249,10 @@ scaffolding.addCloudProviderOverride("☁ チャットデータ4", providers["ws
       vm.setTurboMode(false);
       if (vm.setInterpolation) vm.setInterpolation(false);
       if (vm.setFramerate) vm.setFramerate(30);
-      if (vm.renderer.setUseHighQualityRender) vm.renderer.setUseHighQualityRender(false);
+      if (vm.renderer.setUseHighQualityRender) vm.renderer.setUseHighQualityRender(true);
       if (vm.setRuntimeOptions) vm.setRuntimeOptions({
         fencing: false,
-        miscLimits: false,
+        miscLimits: true,
         maxClones: 9999999999,
       });
       if (vm.setCompilerOptions) vm.setCompilerOptions({
